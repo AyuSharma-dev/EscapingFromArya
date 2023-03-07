@@ -17,6 +17,7 @@ var gameOverSound = new Audio();
 var busSound = new Audio();
 var gameCompleteSound = new Audio();
 var canPlayAudio = 0;
+var isMobile=false;
 
 window.onload = function exampleFunction() {
   
@@ -24,17 +25,33 @@ window.onload = function exampleFunction() {
     ctx = canvas.getContext("2d");
     loadAudioFiles();
     //startGameScreen();
+    isMobile = isMobileDevice();
     charMoveHandler();   
     loadImages();
 }
+
+function isMobileDevice() {
+    console.log('nav--',navigator.userAgent);
+    if (navigator.userAgent.match(/Android/i)
+    || navigator.userAgent.match(/webOS/i)
+    || navigator.userAgent.match(/iPhone/i)
+    || navigator.userAgent.match(/iPad/i)
+    || navigator.userAgent.match(/iPod/i)
+    || navigator.userAgent.match(/BlackBerry/i)
+    || navigator.userAgent.match(/Windows Phone/i)) {
+       return true;
+    }
+    return false;
+ }
+
 
 function getMouse( e ){
     var rect = canvas.getBoundingClientRect();
     let posx = e.clientX  - rect.left;
     let posy = e.clientY  - rect.top;
 
-    // document.getElementById('xCord').innerHTML = Math.ceil(posx);
-    // document.getElementById('yCord').innerHTML = Math.ceil(posy);
+    document.getElementById('xCord').innerHTML = Math.ceil(posx);
+    document.getElementById('yCord').innerHTML = Math.ceil(posy);
 }
 
 function loadAudioFiles(){
@@ -112,6 +129,9 @@ function draw(){
         if( ![17, 0].includes( currentScene ) ){
             drawBoy();
         }
+        if( isMobile ){
+            drawButtons();
+        }
         showMessage();
         handleMovements();
     }
@@ -128,7 +148,7 @@ function loadImages(){
                       'guard', 'bus', 'fcS', 'arrowRight', 'arrowDown', 'arrowUp', 'arrowLeft', 'busRight',
                       'trRight1', 'trRight2', 'trLeft1', 'trLeft2', 'trDown1', 'trDown2', 'trUp1', 'trUp2', 'tcr1',
                       'dustbinBox', 'ex', 'car1', 'car4', 'fcSLeft', 'fcSRight', 'shelterImg1', 'shelterImg2', 'blockImg',
-                      'bgLeft1', 'bgLeft2', 'bgDown1', 'bgDown2', 'bgRight1', 'bgRight2', 'bus3', 'gameCompletionScene' ];
+                      'bgLeft1', 'bgLeft2', 'bgDown1', 'bgDown2', 'bgRight1', 'bgRight2', 'bus3', 'gameCompletionScene', 'controlArrowsBg' ];
 
     let count = 0;
     allImages.forEach(function(imgName){
