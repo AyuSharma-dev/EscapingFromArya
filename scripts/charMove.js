@@ -1,6 +1,6 @@
 var keysPressed = {};
 var keyDownCount = 0;
-var currentScene = 0; 
+var currentScene = 1; 
 var gameCompleted;
 var go_right, go_left, go_up, go_down, space_down;
 
