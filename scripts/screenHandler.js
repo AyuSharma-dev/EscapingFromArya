@@ -94,8 +94,10 @@ function startGameScreen(){
     ctx.fillText("Press \"S\" to start the game.", textW, 350);
     ctx.strokeText("Press \"S\" to start the game.", textW, 350);
 
-    if( isMobile ){
-        //drawButtons();
+    if( true ){
+        ctx.globalAlpha = 0.5;
+        ctx.drawImage( allImagesMap[ 'controlArrowsBg' ] , 10, 420, 150, 150);
+        ctx.globalAlpha = 1;
     }
     
 }

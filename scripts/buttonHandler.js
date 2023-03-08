@@ -88,6 +88,7 @@ function drawButtons() {
                         }
                         break;
                 }
+                event.preventDefault();
             }
             // intervalId = setInterval(function() {
             //     // Set the stroke style to blue
@@ -96,7 +97,7 @@ function drawButtons() {
         });
 
         
-        event.preventDefault();
+        
     });
 
     canvas.addEventListener('touchend', function(event) { 
