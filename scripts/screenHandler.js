@@ -95,7 +95,7 @@ function startGameScreen(){
     ctx.strokeText("Press \"S\" to start the game.", textW, 350);
 
     if( isMobile ){
-        drawButtons();
+        //drawButtons();
     }
     
 }

@@ -27,6 +27,7 @@ window.onload = function exampleFunction() {
     //startGameScreen();
     isMobile = isMobileDevice();
     charMoveHandler();   
+    drawButtons();
     loadImages();
 }
 
@@ -129,8 +130,12 @@ function draw(){
         if( ![17, 0].includes( currentScene ) ){
             drawBoy();
         }
-        if( isMobile ){
-            drawButtons();
+        if( true ){
+            ctx.globalAlpha = 0.5;
+            ctx.drawImage( allImagesMap[ 'controlArrowsBg' ] , 10, 420, 150, 150);
+            ctx.globalAlpha = 1;
+            //drawButtons();
+            
         }
         showMessage();
         handleMovements();

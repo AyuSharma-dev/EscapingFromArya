@@ -95,6 +95,7 @@ function keyUpHandler(e){
 
 function handleMovements(){
 
+    
     if( space_down ){
         showingMessage = false;
         message = null;

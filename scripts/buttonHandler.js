@@ -1,5 +1,7 @@
 function drawButtons() {
 
+    var intervalId;
+
     // Define button objects
     const buttons = [{
             name: 'up',
@@ -38,16 +40,19 @@ function drawButtons() {
         }
     ];
 
-    ctx.globalAlpha = 0.5;
-    ctx.drawImage( allImagesMap[ 'controlArrowsBg' ] , 10, 420, 150, 150);
-    ctx.globalAlpha = 1;
+    // ctx.globalAlpha = 0.5;
+    // ctx.drawImage( allImagesMap[ 'controlArrowsBg' ] , 10, 420, 150, 150);
+    // ctx.globalAlpha = 1;
 
     //console.log('drawButton');
     // Listen for click events
-    canvas.addEventListener('mousedown', function(event) {
-        const mouseX = event.clientX - canvas.offsetLeft;
-        const mouseY = event.clientY - canvas.offsetTop;
+    canvas.addEventListener('touchstart', function(event) {
+        console.log('touching');
+        var touch = event.touches[0];
+        const mouseX = touch.clientX - canvas.offsetLeft;
+        const mouseY = touch.clientY - canvas.offsetTop;
 
+        console.log(mouseX,  mouseY );
         // Check which button was clicked
         buttons.forEach(button => {
             if (mouseX >= button.xStart && mouseX <= button.xEnd &&
@@ -84,10 +89,22 @@ function drawButtons() {
                         break;
                 }
             }
+            // intervalId = setInterval(function() {
+            //     // Set the stroke style to blue
+            //     go_right = true;
+            // }, 50);
         });
+
+        
+        event.preventDefault();
     });
 
-    canvas.addEventListener('mouseup', function(event) { 
+    canvas.addEventListener('touchend', function(event) { 
+        console.log('touch end');
+        //clearInterval(intervalId);
         go_up = false, go_down=false, go_left=false, go_right=false;
+        event.preventDefault();
     });
+
+    
 }
