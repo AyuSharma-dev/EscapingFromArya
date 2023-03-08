@@ -33,7 +33,7 @@ function drawWardenScene1(){
 
 //Scene 1
 function scene1RestrictedAreas( x, y ){
-    console.log( x, y );
+    //console.log( x, y );
 
     //Message trigger Watchman, G Hostel, Teacher1
 

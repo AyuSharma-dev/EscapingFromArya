@@ -1,13 +1,5 @@
 function drawButtons() {
 
-
-    // Define button parameters
-    const buttonWidth = 50;
-    const buttonHeight = 50;
-    const buttonPadding = 10;
-    const buttonColor = 'green';
-    const buttonTextColor = 'white';
-
     // Define button objects
     const buttons = [{
             name: 'up',
@@ -50,6 +42,7 @@ function drawButtons() {
     ctx.drawImage( allImagesMap[ 'controlArrowsBg' ] , 10, 420, 150, 150);
     ctx.globalAlpha = 1;
 
+    //console.log('drawButton');
     // Listen for click events
     canvas.addEventListener('mousedown', function(event) {
         const mouseX = event.clientX - canvas.offsetLeft;
@@ -59,6 +52,7 @@ function drawButtons() {
         buttons.forEach(button => {
             if (mouseX >= button.xStart && mouseX <= button.xEnd &&
                 mouseY >= button.yStart && mouseY <= button.yEnd) {
+                    console.log('in area', button.name);
                 // Handle the button click
                 switch (button.name) {
                     case 'up':
@@ -75,11 +69,18 @@ function drawButtons() {
                         break;
                     case 'right':
                         // Move right
+                        console.log('right pressed');
                         go_right = true;
                         break;
                     case 'space':
                         // Move space
-                        space_down = true
+                        console.log('s pressed');
+                        if( currentScene == 0 ){
+                            currentScene=1;
+                        }
+                        else{
+                            space_down = true
+                        }
                         break;
                 }
             }

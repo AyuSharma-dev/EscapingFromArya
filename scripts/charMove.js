@@ -3,6 +3,7 @@ var keyDownCount = 0;
 var currentScene = 0; 
 var gameCompleted;
 var go_right, go_left, go_up, go_down, space_down;
+var press_s=false;
 
 function charMoveHandler(){
 
@@ -39,7 +40,8 @@ function keyDownHandler(e){
         }
     }
 
-    if( keysPressed["s"] && ( gameCompleted || currentScene == 0 ) ){
+    if( ( press_s || keysPressed["s"] ) && ( gameCompleted || currentScene == 0 ) ){
+        press_s = false;
         resetGame();
         currentScene = 1;
     }

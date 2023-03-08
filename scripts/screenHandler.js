@@ -93,6 +93,10 @@ function startGameScreen(){
     ctx.strokeText("Help Ayush to bunk from Arya Campus", textW, 268);
     ctx.fillText("Press \"S\" to start the game.", textW, 350);
     ctx.strokeText("Press \"S\" to start the game.", textW, 350);
+
+    if( isMobile ){
+        drawButtons();
+    }
     
 }
 
@@ -124,6 +128,10 @@ function drawGameOverScreen(){
     ctx.font = "40px Comic Sans MS";
     ctx.fillText("Press C to continue.", textW, 268);
     ctx.fillText("Press R to restart the game.", textW, 350);
+
+    if( isMobile ){
+        drawButtons();
+    }
     
 }
 
